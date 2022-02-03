@@ -5,6 +5,7 @@ import Button from "../button/Button";
 import Api from "../../service/useFetch/Api";
 interface InputProps {
   label: string;
+  style?: any;
   id: any;
   suggestion: string;
   onChange?: (value: any) => void;
@@ -14,7 +15,7 @@ interface InputProps {
 export default function Input(props: InputProps) {
   const [data, setData] = useState<string | null>(null);
   const valueCep = useContext(GlobalContext);
-  const { setState, state } = valueCep;
+  const { setState } = valueCep;
 
   const { request, cep } = Api();
 
@@ -27,7 +28,7 @@ export default function Input(props: InputProps) {
     const cepFilter = data?.replace(/\D/g, "");
 
     await request(`https://viacep.com.br/ws/${cepFilter}/json/`);
-    if (cep) setState((e: any) => ({ ...e, e: cep }));
+    await setState((e: any) => ({ ...e, e: cep }));
   };
 
   return (
@@ -35,6 +36,7 @@ export default function Input(props: InputProps) {
       <form onSubmit={handleSubmit}>
         <S.Label htmlFor={props.id}>{props.label}</S.Label>
         <S.Input
+          style={props.style}
           id={props.id}
           type={props.type ?? "text"}
           value={data ?? ""}
