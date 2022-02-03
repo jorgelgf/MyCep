@@ -15,6 +15,7 @@ interface InputProps {
 export default function Input(props: InputProps) {
   const [data, setData] = useState<string | null>(null);
   const valueCep = useContext(GlobalContext);
+
   const { setState } = valueCep;
 
   const { request, cep } = Api();
@@ -25,29 +26,30 @@ export default function Input(props: InputProps) {
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    const cepFilter = data?.replace(/\D/g, "");
-
+    const cepFilter: any = data?.replace(/\D/g, "");
     await request(`https://viacep.com.br/ws/${cepFilter}/json/`);
     await setState((e: any) => ({ ...e, e: cep }));
   };
 
   return (
-    <S.DivInput>
-      <form onSubmit={handleSubmit}>
-        <S.Label htmlFor={props.id}>{props.label}</S.Label>
-        <S.Input
-          style={props.style}
-          id={props.id}
-          type={props.type ?? "text"}
-          value={data ?? ""}
-          placeholder={props.suggestion}
-          autoComplete="off"
-          onChange={(event: any) => handleChange(event)}
-        />
-        <>
-          <Button txt="SEARCH" />
-        </>
-      </form>
-    </S.DivInput>
+    <>
+      <S.DivInput>
+        <form onSubmit={handleSubmit}>
+          <S.Label htmlFor={props.id}>{props.label}</S.Label>
+          <S.Input
+            style={props.style}
+            id={props.id}
+            type={props.type ?? "text"}
+            value={data ?? ""}
+            placeholder={props.suggestion}
+            autoComplete="off"
+            onChange={(event: any) => handleChange(event)}
+          />
+          <>
+            <Button txt="SEARCH" />
+          </>
+        </form>
+      </S.DivInput>
+    </>
   );
 }

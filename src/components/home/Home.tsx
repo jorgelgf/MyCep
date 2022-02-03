@@ -16,7 +16,7 @@ const Home = () => {
         <div style={{ margin: "30px" }}>
           {e &&
             Object.keys(e).map((lab, i): any => {
-              if (e[lab] === "") return null;
+              if (e[lab] === "" || e[lab] === true) return null;
               return (
                 <Result label={lab} key={i}>
                   {e[lab]}
