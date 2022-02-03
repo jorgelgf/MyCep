@@ -1,4 +1,7 @@
 import styled from "styled-components";
+export const DivInput = styled.div`
+  border-radius: 5px;
+`;
 
 export const Input = styled.input`
   background-color: transparent;
@@ -15,7 +18,7 @@ export const Input = styled.input`
   color: #fff;
   width: auto;
   border-radius: 5px;
-  width: 30%;
+  width: 40%;
   height: 1em;
   padding: 0.8em;
   outline: #fff;

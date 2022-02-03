@@ -5,5 +5,9 @@ interface ButtonProps {
 }
 
 export default function Button(props: ButtonProps) {
-  return <S.Btn>{props.txt ?? "SEND"}</S.Btn>;
+  return (
+    <S.Container>
+      <S.Btn>{props.txt ?? "SEND"}</S.Btn>
+    </S.Container>
+  );
 }

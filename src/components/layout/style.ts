@@ -9,7 +9,7 @@ export const Container = styled.div`
   height: 100vh;
   background: linear-gradient(45deg, #a0c1b8, #726a95, #719fb0, #a0c1b8);
   background-size: 300% 300%;
-  animation: colors 40s ease infinite;
+  animation: colors 20s ease infinite;
   @keyframes colors {
     0% {
       background-position: 0% 50%;
