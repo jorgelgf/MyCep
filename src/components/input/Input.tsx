@@ -14,7 +14,7 @@ interface InputProps {
 export default function Input(props: InputProps) {
   const [data, setData] = useState<string | null>(null);
   const valueCep = useContext(GlobalContext);
-  const { setState } = valueCep;
+  const { setState, state } = valueCep;
 
   const { request, cep } = Api();
 
@@ -27,9 +27,7 @@ export default function Input(props: InputProps) {
     const cepFilter = data?.replace(/\D/g, "");
 
     await request(`https://viacep.com.br/ws/${cepFilter}/json/`);
-    if (cep) {
-      await setState({ ...cep });
-    }
+    if (cep) setState((e: any) => ({ ...e, e: cep }));
   };
 
   return (

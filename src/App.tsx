@@ -8,8 +8,9 @@ import { GlobalContext } from "./service/context/cepContext";
 import Loading from "./components/loading/Loading";
 import Api from "./service/useFetch/Api";
 function App() {
-  const value = useContext(GlobalContext);
   const { loading } = Api();
+  const obj = useContext(GlobalContext);
+
   return (
     <DivContext>
       <Layout>
@@ -19,7 +20,6 @@ function App() {
         </div>
 
         <div className="result"></div>
-        {loading && <Loading />}
       </Layout>
     </DivContext>
   );
