@@ -1,8 +1,9 @@
 import * as S from "./style";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { GlobalContext } from "../../service/context/cepContext/index";
 import Button from "../button/Button";
 import Api from "../../service/useFetch/Api";
+
 interface InputProps {
   label: string;
   style?: any;
@@ -28,8 +29,10 @@ export default function Input(props: InputProps) {
     event.preventDefault();
     const cepFilter: any = data?.replace(/\D/g, "");
     await request(`https://viacep.com.br/ws/${cepFilter}/json/`);
-    await setState((e: any) => ({ ...e, e: cep }));
   };
+  useEffect(() => {
+    setState({ ...cep });
+  }, [cep, setState]);
 
   return (
     <>

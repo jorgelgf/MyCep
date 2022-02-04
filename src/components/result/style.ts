@@ -7,6 +7,14 @@ export const Div = styled.div`
   padding: 10px;
   border-radius: 5px;
   width: auto;
+  transform: translateX(-20px);
+  animation: animeLeft 0.4s forwards;
+  @keyframes animeLeft {
+    to {
+      opacity: 1;
+      transform: initial;
+    }
+  }
 `;
 
 export const Label = styled.p`
@@ -14,4 +22,12 @@ export const Label = styled.p`
   font-size: large;
   color: #fff;
   text-shadow: #000 1px 1px 2px;
+  transform: translateX(-20px);
+  animation: animeLeft 0.4s forwards;
+  @keyframes animeLeft {
+    to {
+      opacity: 1;
+      transform: initial;
+    }
+  }
 `;

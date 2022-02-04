@@ -6,23 +6,26 @@ import * as S from "./style";
 import Result from "../result/Result";
 
 const Home = () => {
-  const {
-    state: { e },
-  }: any = useContext(GlobalContext);
+  //recebendo o valor do context
+  const { state }: any = useContext(GlobalContext);
 
-  const elements = () => {
+  //resultado da pesquisa
+  const element = () => {
     return (
       <>
         <div style={{ margin: "30px" }}>
-          {e &&
-            Object.keys(e).map((lab, i): any => {
-              if (e[lab] === "" || e[lab] === true) return null;
-              return (
-                <Result label={lab} key={i}>
-                  {e[lab]}
-                </Result>
-              );
-            })}
+          {Object.keys(state).map((lab, i): any => {
+            if (state[lab] === "" || state[lab] === true) return null;
+            return (
+              <Result
+                style={{ marginBottom: "10px" }}
+                label={lab.toUpperCase()}
+                key={i}
+              >
+                {state[lab]}
+              </Result>
+            );
+          })}
         </div>
       </>
     );
@@ -42,7 +45,11 @@ const Home = () => {
       >
         <Input label="CEP" id="cep" suggestion="00000-000" />
       </div>
-      {elements()}
+
+      {
+        //chamando o elemento do resultado
+        state.logradouro && element()
+      }
     </S.ContainerHome>
   );
 };

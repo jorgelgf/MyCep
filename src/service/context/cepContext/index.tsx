@@ -1,7 +1,7 @@
 import { createContext, useState } from "react";
 import { initialState } from "./cep";
 
-export const GlobalContext = createContext<any>(null);
+export const GlobalContext = createContext(initialState);
 
 export default function AppContext(props: any) {
   const [state, setState] = useState(initialState);
