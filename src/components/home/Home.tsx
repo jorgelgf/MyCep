@@ -1,38 +1,56 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import Header from "../header/Header";
 import Input from "../input/Input";
 import { GlobalContext } from "../../service/context/cepContext";
 import * as S from "./style";
 import Result from "../result/Result";
+import Modal from "../modal/Modal";
 import NotFound from "../notFound/NotFound";
 
 const Home = () => {
   //recebendo o valor do context
-  const { state }: any = useContext(GlobalContext);
+  const { state, setState }: any = useContext(GlobalContext);
+  const [openModal, setOpenModal] = useState<true | false>(false);
+
+  useEffect(() => {
+    if (state.cepFilter?.length < 8 || state.cepFilter?.length > 8) {
+      return setOpenModal(true);
+    }
+  }, [state.cepFilter?.length]);
+
+  const handleClick = async () => {
+    setState("");
+    setOpenModal(false);
+  };
 
   //resultado da pesquisa
   const element = () => {
-    if (state["erro"] === true) {
+    if (openModal) {
+      return <Modal onClick={handleClick} />;
+    } else if (state["erro"] === true) {
       return <NotFound />;
-    } else
-      return (
-        <>
-          <div style={{ margin: "30px" }}>
-            {Object.keys(state).map((lab, i): any => {
-              if (state[lab] === "" || state[lab] === true) return null;
-              return (
-                <Result
-                  style={{ marginBottom: "10px" }}
-                  label={lab.toUpperCase()}
-                  key={i}
-                >
-                  {state[lab]}
-                </Result>
-              );
-            })}
-          </div>
-        </>
-      );
+    } else {
+      if (state.cepFilter?.length < 8 || state.cepFilter?.length > 8) {
+        return (
+          <>
+            <div style={{ margin: "30px" }}>
+              {Object.keys(state).map((lab, i): any => {
+                if (state[lab] === "" || state[lab] === true) return null;
+                return (
+                  <Result
+                    style={{ marginBottom: "10px" }}
+                    label={lab.toUpperCase()}
+                    key={i}
+                  >
+                    {state[lab]}
+                  </Result>
+                );
+              })}
+            </div>
+          </>
+        );
+      }
+    }
   };
 
   return (

@@ -28,7 +28,11 @@ export default function Input(props: InputProps) {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     const cepFilter: any = data?.replace(/\D/g, "");
-    await request(`https://viacep.com.br/ws/${cepFilter}/json/`);
+    if (cepFilter.length === 8) {
+      await request(`https://viacep.com.br/ws/${cepFilter}/json/`);
+    } else {
+      await setState({ cepFilter });
+    }
   };
   useEffect(() => {
     setState({ ...cep });
