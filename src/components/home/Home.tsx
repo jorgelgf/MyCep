@@ -4,6 +4,7 @@ import Input from "../input/Input";
 import { GlobalContext } from "../../service/context/cepContext";
 import * as S from "./style";
 import Result from "../result/Result";
+import NotFound from "../notFound/NotFound";
 
 const Home = () => {
   //recebendo o valor do context
@@ -11,24 +12,27 @@ const Home = () => {
 
   //resultado da pesquisa
   const element = () => {
-    return (
-      <>
-        <div style={{ margin: "30px" }}>
-          {Object.keys(state).map((lab, i): any => {
-            if (state[lab] === "" || state[lab] === true) return null;
-            return (
-              <Result
-                style={{ marginBottom: "10px" }}
-                label={lab.toUpperCase()}
-                key={i}
-              >
-                {state[lab]}
-              </Result>
-            );
-          })}
-        </div>
-      </>
-    );
+    if (state["erro"] === true) {
+      return <NotFound />;
+    } else
+      return (
+        <>
+          <div style={{ margin: "30px" }}>
+            {Object.keys(state).map((lab, i): any => {
+              if (state[lab] === "" || state[lab] === true) return null;
+              return (
+                <Result
+                  style={{ marginBottom: "10px" }}
+                  label={lab.toUpperCase()}
+                  key={i}
+                >
+                  {state[lab]}
+                </Result>
+              );
+            })}
+          </div>
+        </>
+      );
   };
 
   return (
@@ -48,7 +52,7 @@ const Home = () => {
 
       {
         //chamando o elemento do resultado
-        state.logradouro && element()
+        element()
       }
     </S.ContainerHome>
   );
