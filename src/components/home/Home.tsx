@@ -30,26 +30,25 @@ const Home = () => {
     } else if (state["erro"] === true) {
       return <NotFound />;
     } else {
-      if (state.cepFilter?.length < 8 || state.cepFilter?.length > 8) {
-        return (
-          <>
-            <div style={{ margin: "30px" }}>
-              {Object.keys(state).map((lab, i): any => {
-                if (state[lab] === "" || state[lab] === true) return null;
-                return (
-                  <Result
-                    style={{ marginBottom: "10px" }}
-                    label={lab.toUpperCase()}
-                    key={i}
-                  >
-                    {state[lab]}
-                  </Result>
-                );
-              })}
-            </div>
-          </>
-        );
-      }
+      console.log("entrou");
+      return (
+        <>
+          <div style={{ margin: "30px" }}>
+            {Object.keys(state).map((lab, i): any => {
+              if (state[lab] === "" || state[lab] === true) return null;
+              return (
+                <Result
+                  style={{ marginBottom: "10px" }}
+                  label={lab.toUpperCase()}
+                  key={i}
+                >
+                  {state[lab]}
+                </Result>
+              );
+            })}
+          </div>
+        </>
+      );
     }
   };
 
