@@ -33,7 +33,7 @@ const Home = () => {
 
   return (
     <S.ContainerHome>
-      <Header text="My cep" />
+      <Header text="My CEP" />
       <div
         style={{
           display: "flex",
