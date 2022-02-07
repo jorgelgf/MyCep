@@ -30,7 +30,6 @@ const Home = () => {
     } else if (state["erro"] === true) {
       return <NotFound />;
     } else {
-      console.log("entrou");
       return (
         <>
           <div style={{ margin: "30px" }}>

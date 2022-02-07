@@ -7,7 +7,7 @@ export const Input = styled.input`
   background-color: transparent;
   border: 3px #fff solid;
   ::-webkit-input-placeholder {
-    color: #f9fbfd;
+    color: #686868;
   }
   ::-webkit-inner-spin-button {
     -webkit-appearance: none;
