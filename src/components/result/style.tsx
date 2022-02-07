@@ -5,10 +5,12 @@ export const Div = styled.div`
   font-family: "Courier New", Courier, monospace;
   font-size: medium;
   padding: 10px;
+  border: 0 0 3px 0 solid #fff;
   border-radius: 5px;
   width: auto;
   transform: translateX(-20px);
   animation: animeLeft 0.4s forwards;
+  margin-bottom: 50px;
   @keyframes animeLeft {
     to {
       opacity: 1;

@@ -39,7 +39,6 @@ const Home = () => {
                 <Result
                   style={{ marginBottom: "10px" }}
                   label={lab.toUpperCase()}
-                  key={i}
                 >
                   {state[lab]}
                 </Result>
