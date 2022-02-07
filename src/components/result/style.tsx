@@ -8,9 +8,10 @@ export const Div = styled.div`
   border: 0 0 3px 0 solid #fff;
   border-radius: 5px;
   width: auto;
+  margin-bottom: 50px;
+
   transform: translateX(-20px);
   animation: animeLeft 0.4s forwards;
-  margin-bottom: 50px;
   @keyframes animeLeft {
     to {
       opacity: 1;

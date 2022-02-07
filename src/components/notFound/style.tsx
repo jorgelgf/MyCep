@@ -6,16 +6,14 @@ export const ContainerNotFound = styled.div`
   justify-content: center;
   font-size: min(20px);
   margin-top: 3em;
-  animation: colors 20s ease infinite;
-  @keyframes colors {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
+  margin-bottom: 50px;
+
+  transform: translateX(-20px);
+  animation: animeLeft 0.4s forwards;
+  @keyframes animeLeft {
+    to {
+      opacity: 1;
+      transform: initial;
     }
   }
 `;
