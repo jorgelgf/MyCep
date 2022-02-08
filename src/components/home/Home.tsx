@@ -33,10 +33,11 @@ const Home = () => {
       return (
         <>
           <div style={{ margin: "30px" }}>
-            {Object.keys(state).map((lab, i): any => {
+            {Object.keys(state).map((lab: string, i: number) => {
               if (state[lab] === "" || state[lab] === true) return null;
               return (
                 <Result
+                  key={i}
                   style={{ marginBottom: "10px" }}
                   label={lab.toUpperCase()}
                 >

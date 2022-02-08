@@ -8,11 +8,11 @@
 
 ## Desktop
 
-<img src="https://i.ibb.co/K002Zk4/desk.png" alt="desktop img">
+<img src="https://i.ibb.co/HxS36qG/desk.png" alt="desktop img">
 
 ## Mobile
 
-<img src="https://i.ibb.co/Z16zjyL/mob.png" alt="mobile img">
+<img src="https://i.ibb.co/LZ6hZq6/mob.png" alt="mobile img">
 
 </br>
 <a href="https://mycep.netlify.app/" alt="link para ver o site em funcionamento">Clique aqui para ver</a>

@@ -7,7 +7,7 @@ import Api from "../../service/useFetch/Api";
 interface InputProps {
   label: string;
   style?: any;
-  id: any;
+  id: string;
   suggestion: string;
   onChange?: (value: any) => void;
   type?: string;
@@ -27,8 +27,8 @@ export default function Input(props: InputProps) {
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    const cepFilter: any = data?.replace(/\D/g, "");
-    if (cepFilter.length === 8) {
+    const cepFilter: string | undefined = data?.replace(/\D/g, "");
+    if (cepFilter?.length === 8) {
       await request(`https://viacep.com.br/ws/${cepFilter}/json/`);
     } else {
       await setState({ cepFilter });
